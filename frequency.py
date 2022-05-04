@@ -17,9 +17,6 @@ months = [April_WR,March_WR,Feb_WR]
 #print(March_WR)
 #print(Feb_WR)
 
-def graph(letter,count):
-  pass
-
 for x in alph:
   tally = 0
   current_letter = x
@@ -34,4 +31,14 @@ for x in alph:
       except TypeError:
         pass
   total_ltr_count += tally
+  ltr_count.append(tally)
   print(current_letter,tally)
+print(alph)
+print(ltr_count)
+
+
+plot.bar(alph,ltr_count,align='center',color='green')
+plot.ylabel('Total Letter Count')
+plot.xlabel('Letter')
+plot.title('Frequency of Letters in Wordle')
+plot.show()
