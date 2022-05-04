@@ -5,37 +5,24 @@ data = fl.read_csv('Book1.csv', header=0)
 ltr_count = []
 alph = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
 'O','P','Q','R','S','T','U','V','W','X','Y','Z']
-total_ltr_count = 0
+months = [data['Date A'],data['Date M'],data['Date F']]
 
-April_WR = data['Date A']
-March_WR = data['Date M']
-Feb_WR = data['Date F']
-
-months = [April_WR,March_WR,Feb_WR]
-
-#print(April_WR)
-#print(March_WR)
-#print(Feb_WR)
-
-for x in alph:
+for letter in alph:
   tally = 0
-  current_letter = x
+  current_letter = letter
   for month in months:
-    for x in month:
-      current_word = x
-      #print(current_word)
+    for word in month:
+      current_word = word
       try:
-        for x in current_word:
-          if x == current_letter:
+        for letter in current_word:
+          if letter == current_letter:
             tally += 1
       except TypeError:
         pass
-  total_ltr_count += tally
   ltr_count.append(tally)
   print(current_letter,tally)
 print(alph)
 print(ltr_count)
-
 
 plot.bar(alph,ltr_count,align='center',color='green')
 plot.ylabel('Total Letter Count')
